@@ -30,18 +30,25 @@ class User extends Authenticatable
     // El usuario tiene muchos posts
     public function posts()
     {
-        return $this->hasMany('App\Post','autor');
+        return $this->hasMany('App\Post');
     }
 
     // El usuario tiene un perfil personal
     public function datos_usuario()
     {
-        return $this->hasOne('App\DatosUsuario','usuario');
+        return $this->hasOne('App\DatosUsuario');
     }
 
     // El usuario tiene muchos logros
     public function logros()
     {
-        return $this->hasMany('App\Posts','author_id');
+        return $this->belongsToMany('App\Logros', 'usuario_logro', 'id_usuario', 'id_logro');
     }
+
+    // muchos usuarios tienen muchos puntos en muchos posts
+    public function puntos()
+    {
+        return $this->hasOne('App\Puntos');
+    }
+
 }
