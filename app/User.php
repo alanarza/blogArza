@@ -38,4 +38,10 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\DatosUsuario','usuario');
     }
+
+    // El usuario tiene muchos logros
+    public function logros()
+    {
+        return $this->hasMany('App\Posts','author_id');
+    }
 }
