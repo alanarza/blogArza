@@ -98,6 +98,8 @@
     </div>
 
     <!-- Scripts -->
+    <script src="{{ asset('/js/jquery.min-2.1.3.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
     <script src="/js/app.js"></script>
 </body>
 </html>

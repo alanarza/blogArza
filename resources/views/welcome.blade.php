@@ -6,11 +6,15 @@
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading">Ultimas Entradas <a class="btn btn-success btn-xs pull-right">Crear Post <span class="glyphicon glyphicon-plus"></span></a></div>
+                <div class="panel-heading">
+                    Ultimas Entradas
+                    <a class="btn btn-success btn-xs pull-right">Crear Post <span class="glyphicon glyphicon-plus"></span></a>
+                </div>
 
                 <div class="panel-body">
                     
                     Hola 
+                    
                 </div>
             </div>
         </div>
@@ -22,6 +26,7 @@
                 <div class="panel-body">
                     
                     Hola 
+
                 </div>
             </div>
         </div>
