@@ -13,7 +13,9 @@
 
                 <div class="panel-body">
                     
-                    Hola 
+                    @if(!Auth::guest() && Auth::user()->tengo_permiso('lectura'))
+                        <h1>holanda</h1>
+                    @endif
                     
                 </div>
             </div>

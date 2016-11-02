@@ -54,13 +54,13 @@ class User extends Authenticatable
     // El usuario posee un rol
     public function rol()
     {
-        return $this->belongsTo('App\Rol','rol');
+        return $this->belongsTo('App\Roles','id_rol');
     }
 
     // El usuario posee un rango calculado en base a los puntos que posee
     public function rango()
     {
-        return $this->belongsTo('App\Rangos','rango');
+        return $this->belongsTo('App\Rangos','id_rango');
     }
 
 
@@ -69,7 +69,15 @@ class User extends Authenticatable
     // Pregunta si se posee el permiso, retorna V o F
     public function tengo_permiso($permiso)
     {
-        
+
+        $p = $this->rol->permisos()->where('permiso',$permiso)->get();
+
+        if(!$p->isEmpty())
+        {
+            return true;
+        }
+
+        return false;
     }
 
 }
