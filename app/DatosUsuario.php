@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class DatosUsuario extends Model
 {
+
+	protected $table = 'datos_usuario';
+
     // Tiene un usuario
     public function usuario()
     {

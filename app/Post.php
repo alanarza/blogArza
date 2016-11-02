@@ -18,4 +18,9 @@ class Post extends Model
         return $this->hasOne('App\Puntos');
     }
 
+    public function categoria()
+    {
+        return $this->belongsTo('App\Categorias','categoria');
+    }
+
 }
