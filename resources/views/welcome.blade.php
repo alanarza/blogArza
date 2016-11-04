@@ -7,15 +7,14 @@
         <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Ultimas Entradas
+                    Ultimas Posts
+
+                    @if(!Auth::guest())
                     <a class="btn btn-success btn-xs pull-right">Crear Post <span class="glyphicon glyphicon-plus"></span></a>
+                    @endif
                 </div>
 
                 <div class="panel-body">
-                    
-                    @if(!Auth::guest() && Auth::user()->tengo_permiso('lectura'))
-                        <h1>holanda</h1>
-                    @endif
                     
                 </div>
             </div>

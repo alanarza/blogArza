@@ -66,7 +66,7 @@ class User extends Authenticatable
 
     // MIS FUNCIONES!!
 
-    // Pregunta si se posee el permiso, retorna V o F
+    // Pregunta si se posee el permiso, retorna T o F
     public function tengo_permiso($permiso)
     {
 
