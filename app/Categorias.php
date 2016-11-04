@@ -13,11 +13,13 @@ class Categorias extends Model
 
     // MIS FUNCIONES!!
 
+    /*
     public function ver_categorias()
     {
-    	
 
-    	
-    	return
+    	$categorias = $this->all();
+
+    	return $categorias;
     }
+    */
 }

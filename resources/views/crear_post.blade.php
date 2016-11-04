@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row">
+
 	<div class="col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -33,18 +33,26 @@
 					</div>
 
 					<div class="form-group">
-						<input required="required" placeholder="Tags separados por coma eje: nuevo, ejemplo, de tag" type="text" name = "tags" class="form-control" />
+						<input required="required" placeholder="Tags separados por coma eje: nuevo, ejemplo, de tag." type="text" name = "tags" class="form-control" />
 					</div>
+					
+					<div class="form-group">
+					<select class="form-control" id="select">
+						
+						@foreach( $categorias as $categoria )
+								
+							<option value="{{ $categoria->id }}"> {{ $categoria->nombre_categoria }} </option>
 
-					<!--aca va el dropdown de categoria-->
-
-
+						@endforeach
+			          
+			        </select>
+			    	</div>
+					
 					<input type="submit" name='publish' class="btn btn-success" value = "Publicar"/>
 				</form>
 
 			</div>
 		</div>
 	</div>
-</div>
 
 @endsection

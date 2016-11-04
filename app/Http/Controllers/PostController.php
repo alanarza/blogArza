@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Post;
+use App\Categorias;
 use Carbon\Carbon;
 
 class PostController extends Controller
@@ -18,7 +19,9 @@ class PostController extends Controller
     // Crear nuevo post
     public function nuevo_post()
     {
-    	return view('crear_post');
+        $categorias = Categorias::all();
+
+    	return view('crear_post',compact('categorias'));
     }
 
     // Guardar post
