@@ -10,4 +10,14 @@ class Categorias extends Model
     {
     	return $this->hasOne('App\Post');
     }
+
+    // MIS FUNCIONES!!
+
+    public function ver_categorias()
+    {
+    	
+
+    	
+    	return
+    }
 }

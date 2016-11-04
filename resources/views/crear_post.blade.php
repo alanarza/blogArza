@@ -20,17 +20,25 @@
 					}); 
 				</script>
 
-				<form action="/new-post" method="post">
+				<form action="/guardar_post" method="post">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div class="form-group">
-						<input required="required" placeholder="Titulo del post" type="text" name = "title"class="form-control" />
+						<input required="required" placeholder="Titulo del post" type="text" name = "titulo"class="form-control" />
 					</div>
 					<div class="form-group">
-						<input required="required" placeholder="Breve descripcion del post" type="text" name = "description" class="form-control" />
+						<input required="required" placeholder="Breve descripcion del post" type="text" name = "descripcion" class="form-control" />
 					</div>
 					<div class="form-group">
-						<textarea name='body'class="form-control">{{ old('body') }}</textarea>
+						<textarea name='cuerpo'class="form-control">{{ old('body') }}</textarea>
 					</div>
+
+					<div class="form-group">
+						<input required="required" placeholder="Tags separados por coma eje: nuevo, ejemplo, de tag" type="text" name = "tags" class="form-control" />
+					</div>
+
+					<!--aca va el dropdown de categoria-->
+
+
 					<input type="submit" name='publish' class="btn btn-success" value = "Publicar"/>
 				</form>
 
