@@ -37,15 +37,15 @@
 					</div>
 					
 					<div class="form-group">
-					<select class="form-control" id="select">
-						
-						@foreach( $categorias as $categoria )
-								
-							<option value="{{ $categoria->id }}"> {{ $categoria->nombre_categoria }} </option>
+						<select class="form-control" id="select" name="id_categoria">
+							
+							@foreach( $categorias as $categoria )
+									
+								<option value="{{ $categoria->id }}"> {{ $categoria->nombre_categoria }} </option>
 
-						@endforeach
-			          
-			        </select>
+							@endforeach
+				          
+				        </select>
 			    	</div>
 					
 					<input type="submit" name='publish' class="btn btn-success" value = "Publicar"/>

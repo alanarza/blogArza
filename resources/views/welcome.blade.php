@@ -10,12 +10,26 @@
                     Ultimas Posts
 
                     @if(!Auth::guest())
-                    <a class="btn btn-success btn-xs pull-right">Crear Post <span class="glyphicon glyphicon-plus"></span></a>
+                    <a href="/nuevo_post" class="btn btn-success btn-xs pull-right">Crear Post <span class="glyphicon glyphicon-plus"></span></a>
                     @endif
                 </div>
 
                 <div class="panel-body">
                     
+                    <ul class="list-group">
+                    @foreach( $posts as $post )
+                
+                        <div class="list-group">
+                          <a href="{{ url('post/'.$post->id.'/'.$post->slug) }}" class="list-group-item">
+                            <h4 class="list-group-item-heading">{{ $post->titulo }}</h4>
+                            <p class="list-group-item-text">{{ str_limit($post->descripcion,195) }}</p>
+                          </a>
+                        </div>
+                    
+                    @endforeach
+                    <div class="col-md-offset-4"><?php echo $posts->render(); ?></div>
+                    </ul>
+
                 </div>
             </div>
         </div>

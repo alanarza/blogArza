@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 02, 2016 at 04:50 PM
+-- Generation Time: Nov 04, 2016 at 06:35 PM
 -- Server version: 5.5.53-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.20
 
@@ -31,6 +31,32 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `nombre_categoria` varchar(45) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nombre_categoria`, `descripcion`) VALUES
+(1, 'php', 'Lenguaje de programacion php'),
+(2, 'java', 'Lenguaje de programacion java');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comentarios`
+--
+
+CREATE TABLE IF NOT EXISTS `comentarios` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(10) unsigned NOT NULL,
+  `id_post` int(10) unsigned NOT NULL,
+  `comentario` varchar(45) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_comentarios_users1_idx` (`id_usuario`),
+  KEY `fk_comentarios_posts1_idx` (`id_post`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -126,10 +152,21 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `estado` tinyint(1) DEFAULT NULL,
   `id_categoria` int(10) unsigned NOT NULL,
   `id_autor` int(10) unsigned NOT NULL,
+  `slug` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_post_categorias1_idx` (`id_categoria`),
   KEY `fk_post_users1_idx` (`id_autor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `titulo`, `descripcion`, `cuerpo`, `tags`, `fecha_creacion`, `fecha_ultima_modificacion`, `estado`, `id_categoria`, `id_autor`, `slug`) VALUES
+(1, 'hola', 'hola', '<p>hola</p>', 'hola, hola, hola', '2016-11-04 19:19:32', '2016-11-04 19:19:32', 1, 2, 2, 'hola'),
+(2, 'Este es mi primer post', 'Esta es la primera breve descripcion de mi post', '<p>Este es el cuerpo de mi primer post en la pagina</p>', 'mi tag 1, mi tag 2, mi tag 3', '2016-11-04 19:29:55', '2016-11-04 19:29:55', 1, 1, 2, 'este-es-mi-primer-post'),
+(3, 'Este es mi primer post', 'hola', '<p>hola</p>', 'hola, hola, hola', '2016-11-04 19:32:41', '2016-11-04 19:32:41', 1, 2, 2, 'este-es-mi-primer-post'),
+(4, 'moises hola hola ASDASDa sads', 'moises', '<p><strong>hola</strong></p>', 'aasd, asdas ,a sdasd', '2016-11-04 20:34:48', '2016-11-04 20:34:48', 1, 2, 2, 'moises-hola-hola-asdasda-sads');
 
 -- --------------------------------------------------------
 
@@ -240,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `id_rango`, `id_rol`) VALUES
-(2, 'Alan', 'arzapersonal@gmail.com', '$2y$10$Hmscok6hLbzwALQzgd4XzusHW1CGYs6QExFNQ6Lf51IvC9rcJ5Q2m', 'wBOPGNEarLyEbKEuY0cjt6Zqj4fzPRyAV061u5SpLdTvW6B1LkepLmUTrWH7', '2016-10-29 01:14:18', '2016-10-29 01:17:15', 1, 1);
+(2, 'Alan', 'arzapersonal@gmail.com', '$2y$10$Hmscok6hLbzwALQzgd4XzusHW1CGYs6QExFNQ6Lf51IvC9rcJ5Q2m', 't17pMag3VC5edOOUHhcPJJ2ALX3Kr65nxIhuAeiNAgEluahHvnd3BdGc6bsd', '2016-10-29 01:14:18', '2016-11-04 23:36:42', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -262,9 +299,30 @@ CREATE TABLE IF NOT EXISTS `usuario_logro` (
 --
 
 --
+-- Constraints for table `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `fk_comentarios_users1` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_comentarios_posts1` FOREIGN KEY (`id_post`) REFERENCES `posts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `datos_usuario`
+--
+ALTER TABLE `datos_usuario`
+  ADD CONSTRAINT `fk_datos_usuario_users1` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `posts`
+--
+ALTER TABLE `posts`
+  ADD CONSTRAINT `fk_post_categorias1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_post_users1` FOREIGN KEY (`id_autor`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `puntos`
 --
 ALTER TABLE `puntos`
+  ADD CONSTRAINT `fk_puntos_post1` FOREIGN KEY (`id_post`) REFERENCES `posts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_puntos_users1` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --

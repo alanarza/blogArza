@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
+    public $timestamps = false;
+
     // El post tiene un usuario
     public function usuario()
     {

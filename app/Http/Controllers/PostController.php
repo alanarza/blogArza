@@ -45,7 +45,14 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect('post/'.$post->slug);
+        return redirect('/');
+    }
+
+    public function ver_post($id, $slug)
+    {
+        $post = Post::where('id',$id)->where('slug',$slug)->first();
+
+        return view('ver_post', compact('post'));
     }
 
 }
