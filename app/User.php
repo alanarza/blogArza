@@ -36,7 +36,7 @@ class User extends Authenticatable
     // El usuario tiene un perfil personal
     public function datos_usuario()
     {
-        return $this->hasOne('App\DatosUsuario');
+        return $this->hasOne('App\DatosUsuario','id_usuario');
     }
 
     // El usuario tiene muchos logros

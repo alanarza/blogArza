@@ -72,7 +72,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/perfil') }}">
+                                        <a href="{{ url('/perfil/'. Auth::user()->name ) }}">
                                             Perfil
                                         </a>
 
@@ -98,8 +98,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('/js/jquery.min-2.1.3.js') }}"></script>
+
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script>
     <script src="/js/app.js"></script>
 </body>
 </html>
