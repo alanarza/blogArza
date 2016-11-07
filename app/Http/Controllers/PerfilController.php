@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+use App\User;
+
+class PerfilController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,8 +23,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($perf)
     {
-        return view('home');
+        $user_perfil = User::where('name', $perf)->first();
+
+        return view('perfil', compact('user_perfil'));
     }
 }

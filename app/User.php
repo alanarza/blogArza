@@ -80,4 +80,15 @@ class User extends Authenticatable
         return false;
     }
 
+    public function es_admin()
+    {
+        $role = $this->rol;
+
+        if($role->nombre_rol == 'administrador')
+        {
+            return true;
+        }
+        return false;
+    }
+
 }
