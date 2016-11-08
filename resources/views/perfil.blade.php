@@ -26,7 +26,7 @@
         <div class="panel panel-default">
           <div class="panel-body">
 
-            <legend>Perfil de {{ $user_perfil->name }}<a href="#" class="btn btn-info btn-xs pull-right">Editar Perfil</a></legend>
+            <legend>Perfil de {{ $user_perfil->name }} @if(!Auth::guest() && ($user_perfil->id == Auth::user()->id || Auth::user()->es_admin()))<a href="#" class="btn btn-info btn-xs pull-right">Editar Perfil</a> @endif</legend>
 
 
         </div>
