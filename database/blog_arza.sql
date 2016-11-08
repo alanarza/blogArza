@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 04, 2016 at 06:35 PM
--- Server version: 5.5.53-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.20
+-- Servidor: localhost
+-- Tiempo de generación: 07-11-2016 a las 22:44:28
+-- Versión del servidor: 5.5.53-0ubuntu0.14.04.1
+-- Versión de PHP: 5.5.9-1ubuntu4.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `blog_arza`
+-- Base de datos: `blog_arza`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorias`
+-- Estructura de tabla para la tabla `categorias`
 --
 
 CREATE TABLE IF NOT EXISTS `categorias` (
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `categorias`
+-- Volcado de datos para la tabla `categorias`
 --
 
 INSERT INTO `categorias` (`id`, `nombre_categoria`, `descripcion`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `categorias` (`id`, `nombre_categoria`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comentarios`
+-- Estructura de tabla para la tabla `comentarios`
 --
 
 CREATE TABLE IF NOT EXISTS `comentarios` (
@@ -62,24 +62,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datos_usuario`
---
-
-CREATE TABLE IF NOT EXISTS `datos_usuario` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) DEFAULT NULL,
-  `apellido` varchar(45) DEFAULT NULL,
-  `fecha_nacimiento` date DEFAULT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `id_usuario` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_datos_usuario_users1_idx` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `logros`
+-- Estructura de tabla para la tabla `logros`
 --
 
 CREATE TABLE IF NOT EXISTS `logros` (
@@ -92,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `logros` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Estructura de tabla para la tabla `migrations`
 --
 
 CREATE TABLE IF NOT EXISTS `migrations` (
@@ -103,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Estructura de tabla para la tabla `password_resets`
 --
 
 CREATE TABLE IF NOT EXISTS `password_resets` (
@@ -117,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permisos`
+-- Estructura de tabla para la tabla `permisos`
 --
 
 CREATE TABLE IF NOT EXISTS `permisos` (
@@ -127,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `permisos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `permisos`
+-- Volcado de datos para la tabla `permisos`
 --
 
 INSERT INTO `permisos` (`id`, `permiso`) VALUES
@@ -138,7 +121,7 @@ INSERT INTO `permisos` (`id`, `permiso`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Estructura de tabla para la tabla `posts`
 --
 
 CREATE TABLE IF NOT EXISTS `posts` (
@@ -159,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `posts`
+-- Volcado de datos para la tabla `posts`
 --
 
 INSERT INTO `posts` (`id`, `titulo`, `descripcion`, `cuerpo`, `tags`, `fecha_creacion`, `fecha_ultima_modificacion`, `estado`, `id_categoria`, `id_autor`, `slug`) VALUES
@@ -171,7 +154,7 @@ INSERT INTO `posts` (`id`, `titulo`, `descripcion`, `cuerpo`, `tags`, `fecha_cre
 -- --------------------------------------------------------
 
 --
--- Table structure for table `puntos`
+-- Estructura de tabla para la tabla `puntos`
 --
 
 CREATE TABLE IF NOT EXISTS `puntos` (
@@ -187,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `puntos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rangos`
+-- Estructura de tabla para la tabla `rangos`
 --
 
 CREATE TABLE IF NOT EXISTS `rangos` (
@@ -198,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `rangos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `rangos`
+-- Volcado de datos para la tabla `rangos`
 --
 
 INSERT INTO `rangos` (`id`, `nombre_rango`, `descripcion`) VALUES
@@ -207,7 +190,7 @@ INSERT INTO `rangos` (`id`, `nombre_rango`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Estructura de tabla para la tabla `roles`
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
@@ -218,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `roles`
+-- Volcado de datos para la tabla `roles`
 --
 
 INSERT INTO `roles` (`id`, `nombre_rol`, `descripcion`) VALUES
@@ -228,7 +211,7 @@ INSERT INTO `roles` (`id`, `nombre_rol`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rol_permiso`
+-- Estructura de tabla para la tabla `rol_permiso`
 --
 
 CREATE TABLE IF NOT EXISTS `rol_permiso` (
@@ -241,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `rol_permiso` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `rol_permiso`
+-- Volcado de datos para la tabla `rol_permiso`
 --
 
 INSERT INTO `rol_permiso` (`id`, `id_rol`, `id_permiso`) VALUES
@@ -253,7 +236,7 @@ INSERT INTO `rol_permiso` (`id`, `id_rol`, `id_permiso`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -266,23 +249,30 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `id_rango` int(10) unsigned NOT NULL DEFAULT '1',
   `id_rol` int(10) unsigned NOT NULL DEFAULT '1',
+  `nombre` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `apellido` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
+  `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `foto_perfil` varchar(100) COLLATE utf8_unicode_ci DEFAULT 'no-avatar.png',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`),
+  UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `fk_users_rangos1_idx` (`id_rango`),
   KEY `fk_users_roles1_idx` (`id_rol`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `id_rango`, `id_rol`) VALUES
-(2, 'Alan', 'arzapersonal@gmail.com', '$2y$10$Hmscok6hLbzwALQzgd4XzusHW1CGYs6QExFNQ6Lf51IvC9rcJ5Q2m', 't17pMag3VC5edOOUHhcPJJ2ALX3Kr65nxIhuAeiNAgEluahHvnd3BdGc6bsd', '2016-10-29 01:14:18', '2016-11-04 23:36:42', 1, 1);
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `id_rango`, `id_rol`, `nombre`, `apellido`, `fecha_nacimiento`, `descripcion`, `foto_perfil`) VALUES
+(2, 'Alan', 'arzapersonal@gmail.com', '$2y$10$Hmscok6hLbzwALQzgd4XzusHW1CGYs6QExFNQ6Lf51IvC9rcJ5Q2m', 'Ny4arQ9FeSaeNPhTGpvedwvU6YxMB4EiUPVqrcd1MMdzJsHDgez3v5QsiFOt', '2016-10-29 01:14:18', '2016-11-08 04:38:19', 1, 1, 'Eliezer', 'Arza', '1992-04-20', 'Programador musico, creador del sitio', 'no-avatar.png'),
+(3, 'Superdoop', 'alguien@alguien.com', '$2y$10$eLkA8JJHevqJd3Up4wptAeE5Ev/Wrl.G4i5n1I..WTvVy.h2Upbgm', 'fCm5TcMfwokGfMhgzbzX1AAB8zAJ8at5P6epOA5mu5VsDTrugj3UF8iF8SUL', '2016-11-08 04:38:43', '2016-11-08 04:40:52', 1, 1, 'Alan', 'Leon', '1990-11-09', 'Una descripcion sobre mi', 'no-avatar.png');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario_logro`
+-- Estructura de tabla para la tabla `usuario_logro`
 --
 
 CREATE TABLE IF NOT EXISTS `usuario_logro` (
@@ -295,52 +285,46 @@ CREATE TABLE IF NOT EXISTS `usuario_logro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `comentarios`
+-- Filtros para la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `fk_comentarios_users1` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_comentarios_posts1` FOREIGN KEY (`id_post`) REFERENCES `posts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `datos_usuario`
---
-ALTER TABLE `datos_usuario`
-  ADD CONSTRAINT `fk_datos_usuario_users1` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `posts`
+-- Filtros para la tabla `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `fk_post_categorias1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_post_users1` FOREIGN KEY (`id_autor`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `puntos`
+-- Filtros para la tabla `puntos`
 --
 ALTER TABLE `puntos`
   ADD CONSTRAINT `fk_puntos_post1` FOREIGN KEY (`id_post`) REFERENCES `posts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_puntos_users1` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `rol_permiso`
+-- Filtros para la tabla `rol_permiso`
 --
 ALTER TABLE `rol_permiso`
   ADD CONSTRAINT `fk_rol_permiso_permisos1` FOREIGN KEY (`id_permiso`) REFERENCES `permisos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_rol_permiso_roles1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `users`
+-- Filtros para la tabla `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_rangos1` FOREIGN KEY (`id_rango`) REFERENCES `rangos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_users_roles1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `usuario_logro`
+-- Filtros para la tabla `usuario_logro`
 --
 ALTER TABLE `usuario_logro`
   ADD CONSTRAINT `fk_usuario_logro_logros1` FOREIGN KEY (`id_logro`) REFERENCES `logros` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
