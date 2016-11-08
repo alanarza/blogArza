@@ -10,8 +10,32 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 
+                        <div class="form-group">
+                            <label for="nombre" class="col-md-4 control-label">Nombre</label>
+
+                            <div class="col-md-6">
+                                <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="apellido" class="col-md-4 control-label">Apellido</label>
+
+                            <div class="col-md-6">
+                                <input id="apellido" type="text" class="form-control" name="apellido" placeholder="Apellido" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fech_nacimiento" class="col-md-4 control-label">Fecha de Nacimiento</label>
+
+                            <div class="col-md-6">
+                                <input id="fech_nacimiento" type="date" class="form-control" name="fecha_nacimiento" required autofocus>
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Nombre de Usuario</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
