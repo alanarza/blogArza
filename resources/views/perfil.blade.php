@@ -3,17 +3,37 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Perfil <a href="#" class="btn btn-info btn-xs pull-right">Editar Perfil</a></div>
 
-                <div class="panel-body">
-                    
-                    <img class="media-object" style="max-width: 160px; max-heigth: 160px;"  src="/storage/{{ $user_perfil->datos_usuario->foto_perfil }}" alt="...">
+        <div class="col-lg-3">
+            <a href="#" class="thumbnail">
+            <img style="max-width: 200px; max-heigth: 200px;" src="/storage/{{ $user_perfil->foto_perfil }}" alt="...">
+            </a>
 
-                </div>
+            <div class="well">
+
+                <legend> {{ $user_perfil->nombre }} {{ $user_perfil->apellido }} </legend>
+
+                <h5>Fecha de nacimiento: {{ $user_perfil->fecha_nacimiento }}</h5>
+
+                <h5>Rango: {{ $user_perfil->rango->nombre_rango }}</h5>
+
+                <h5>Sobre mi: {{ $user_perfil->descripcion }}</h5>
+
             </div>
         </div>
+
+        <div class="col-lg-8">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <legend>Perfil de {{ $user_perfil->name }}<a href="#" class="btn btn-info btn-xs pull-right">Editar Perfil</a></legend>
+
+
+        </div>
+        </div>
+        </div>
+
+    
     </div>
 </div>
 @endsection

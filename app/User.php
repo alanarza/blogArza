@@ -33,12 +33,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     }
 
-    // El usuario tiene un perfil personal
-    public function datos_usuario()
-    {
-        return $this->hasOne('App\DatosUsuario','id_usuario');
-    }
-
     // El usuario tiene muchos logros
     public function logros()
     {
