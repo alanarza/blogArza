@@ -27,7 +27,8 @@
                         </div>
                     
                     @endforeach
-                    <div class="col-md-offset-4"><?php echo $posts->render(); ?></div>
+
+                    <div class="col-md-offset-4">{{ $posts->render() }}</div>
                     </ul>
 
                 </div>
