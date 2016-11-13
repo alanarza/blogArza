@@ -31,4 +31,10 @@ class PerfilController extends Controller
 
         return view('perfil', compact('user_perfil'));
     }
+
+    public function FormEditar()
+    {
+        return view('editar_perfil');
+    }
+
 }

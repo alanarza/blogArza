@@ -11,7 +11,7 @@
 
             <div class="well">
 
-                <legend> {{ $user_perfil->nombre }} {{ $user_perfil->apellido }} @if(!Auth::guest() && ($user_perfil->id == Auth::user()->id || Auth::user()->es_admin()))<a href="#" class="btn btn-info btn-xs pull-right">Editar Perfil</a> @endif</legend>
+                <legend> {{ $user_perfil->nombre }} {{ $user_perfil->apellido }} @if(!Auth::guest() && ($user_perfil->id == Auth::user()->id || Auth::user()->es_admin()))<a href="/" class="btn btn-info btn-xs pull-right">Editar Perfil</a> @endif</legend>
 
                 <h5>Fecha de nacimiento: {{ $user_perfil->fecha_nacimiento }}</h5>
 
@@ -40,7 +40,7 @@
                         </div>
                     
                     @endforeach
-                    <div class="col-md-offset-4"> {{ $user_perfil->posts-> }} </div>
+                    <div class="col-md-offset-4"></div>
                 </ul>
             
             </div>

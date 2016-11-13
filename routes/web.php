@@ -23,6 +23,8 @@ Route::post('/guardar_post', 'PostController@guardar_post');
 
 Route::get('/post/{id}/{slug}', 'PostController@ver_post');
 
+Route::get('/perfil/editar-perfil','PerfilController@FormEditar');
+
 // Ruta para obtener archivos
 Route::get('storage/{archivo}', function ($archivo) {
 	$public_path = public_path();
@@ -34,5 +36,4 @@ Route::get('storage/{archivo}', function ($archivo) {
 	}
 	//si no se encuentra lanzamos un error 404.
 	abort(404);
-
 });
