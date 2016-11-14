@@ -23,7 +23,7 @@ Route::post('/guardar_post', 'PostController@guardar_post');
 
 Route::get('/post/{id}/{slug}', 'PostController@ver_post');
 
-Route::get('/perfil/editar-perfil','PerfilController@FormEditar');
+Route::get('/editar-perfil','PerfilController@formEditar');
 
 // Ruta para obtener archivos
 Route::get('storage/{archivo}', function ($archivo) {

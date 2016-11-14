@@ -8,6 +8,8 @@ use App\User;
 
 use App\Post;
 
+use Auth;
+
 class PerfilController extends Controller
 {
     /**
@@ -32,9 +34,11 @@ class PerfilController extends Controller
         return view('perfil', compact('user_perfil'));
     }
 
-    public function FormEditar()
+    public function formEditar()
     {
-        return view('editar_perfil');
+        $usuario = User::find( Auth::user()->id );
+
+        return view('editar_perfil', compact('usuario'));
     }
 
 }

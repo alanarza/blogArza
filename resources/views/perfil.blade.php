@@ -11,7 +11,7 @@
 
             <div class="well">
 
-                <legend> {{ $user_perfil->nombre }} {{ $user_perfil->apellido }} @if(!Auth::guest() && ($user_perfil->id == Auth::user()->id || Auth::user()->es_admin()))<a href="/" class="btn btn-info btn-xs pull-right">Editar Perfil</a> @endif</legend>
+                <legend> {{ $user_perfil->nombre }} {{ $user_perfil->apellido }} @if(!Auth::guest() && ($user_perfil->id == Auth::user()->id || Auth::user()->es_admin()))<a href="/editar-perfil" class="btn btn-info btn-xs pull-right">Editar Perfil</a> @endif</legend>
 
                 <h5>Fecha de nacimiento: {{ $user_perfil->fecha_nacimiento }}</h5>
 
@@ -26,7 +26,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
 
-            <legend>Post de {{ $user_perfil->name }} @if(!Auth::guest()) <a href="/nuevo_post" class="btn btn-success btn-xs pull-right">Crear Post <span class="glyphicon glyphicon-plus"></span></a> @endif</legend>
+            <legend>Post de {{ $user_perfil->name }} @if(!Auth::guest() && ($user_perfil->id == Auth::user()->id || Auth::user()->es_admin())) <a href="/nuevo_post" class="btn btn-success btn-xs pull-right">Crear Post <span class="glyphicon glyphicon-plus"></span></a> @endif</legend>
    
 
                 <ul class="list-group">
