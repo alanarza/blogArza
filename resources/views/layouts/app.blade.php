@@ -78,7 +78,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/perfil/'. Auth::user()->name ) }}">
+                                        <a href="{{ url('/perfil') }}">
                                             Perfil
                                         </a>
 

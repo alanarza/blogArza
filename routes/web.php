@@ -15,7 +15,7 @@ Route::get('/', 'IndexController@index');
 
 Auth::routes();
 
-Route::get('/perfil/{perf}', 'PerfilController@index');
+Route::get('/perfil/{perf?}', 'PerfilController@index');
 
 Route::get('/nuevo_post', 'PostController@nuevo_post');
 
@@ -24,6 +24,8 @@ Route::post('/guardar_post', 'PostController@guardar_post');
 Route::get('/post/{id}/{slug}', 'PostController@ver_post');
 
 Route::get('/editar-perfil','PerfilController@formEditar');
+
+Route::post('/guardar-perfil','PerfilController@guardar');
 
 // Ruta para obtener archivos
 Route::get('storage/{archivo}', function ($archivo) {
