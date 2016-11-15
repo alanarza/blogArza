@@ -21,7 +21,7 @@ class PostController extends Controller
     {
         $categorias = Categorias::all();
 
-    	return view('crear_post',compact('categorias'));
+    	return view('post.crear_post',compact('categorias'));
     }
 
     // Guardar post
@@ -52,7 +52,7 @@ class PostController extends Controller
     {
         $post = Post::where('id',$id)->where('slug',$slug)->first();
 
-        return view('ver_post', compact('post'));
+        return view('post.ver_post', compact('post'));
     }
 
 }

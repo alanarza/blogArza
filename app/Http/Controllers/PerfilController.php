@@ -10,6 +10,8 @@ use App\Post;
 
 use Auth;
 
+use Illuminate\Support\Facades\Hash;
+
 class PerfilController extends Controller
 {
     /**
@@ -33,26 +35,26 @@ class PerfilController extends Controller
         {
             $user_perfil = User::where('name', Auth::user()->name)->first();
 
-            return view('perfil', compact('user_perfil'));
+            return view('personal.perfil', compact('user_perfil'));
         }
 
         $user_perfil = User::where('name', $perf)->first();
 
-        return view('perfil', compact('user_perfil'));
+        return view('personal.perfil', compact('user_perfil'));
     }
 
     public function formEditar()
     {
         $usuario = User::find( Auth::user()->id );
 
-        return view('editar_perfil', compact('usuario'));
+        return view('personal.editar_perfil', compact('usuario'));
     }
 
     protected function guardar(Request $request)
     {
         $this->validate($request, [
-            'nombre' => 'required|max:255',
-            'apellido' => 'required|max:255',
+            'nombre' => 'required|alpha|max:255',
+            'apellido' => 'required|alpha|max:255',
             'fecha_nacimiento' => 'required|date',
             'descripcion' => 'max:255',
         ]);
@@ -98,7 +100,71 @@ class PerfilController extends Controller
 
         $user->save();
 
-        return redirect('perfil');
+        return redirect('/perfil');
+    }
+
+    public function editarDatos()
+    {
+        $usuario = User::find( Auth::user()->id );
+
+        return view('personal.mis_datos', compact('usuario'));
+    }
+
+    protected function guardarDatos(Request $request)
+    {   
+
+        $usuarioid = Auth::user();
+
+        $user = User::find($usuarioid->id);
+
+        $data = $request->all();
+
+        if($data['name'] != $user->name)
+        {
+            $this->validate($request, [
+                'name' => 'max:255|unique:users',
+            ]);
+        }
+
+        if($data['email'] != $user->email )
+        {
+            $this->validate($request, [
+                'email' => 'email|max:255|unique:users',
+            ]);
+        }
+
+        $this->validate($request, [
+            'old_password' => 'min:6',
+            'new_password' => 'min:6',
+            'password_confirmation' => 'min:6|same:new_password',
+        ]);
+
+        if($data['name'] != "")
+        {
+            $user->name = $data['name'];
+        }
+
+        if($data['email'] != "")
+        {
+            $user->email = $data['email'];
+        }
+
+        if($data['new_password'] != "")
+        {   
+            if(!Hash::check($data['old_password'], $user->password)){
+
+              
+                $mb->add("form", "same data already exists");
+
+                return back()->withErrors($mb)->withInput();
+            }
+
+            $user->password = Hash::make($data['new_password']);
+        }
+
+        $user->save();
+
+        return redirect('/perfil');
     }
 
 }
