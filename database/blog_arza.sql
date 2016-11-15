@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.10.1deb1
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 15-11-2016 a las 12:48:18
--- Versión del servidor: 5.5.47
--- Versión de PHP: 5.6.17-3+deb.sury.org~precise+1
+-- Tiempo de generación: 15-11-2016 a las 20:32:39
+-- Versión del servidor: 5.5.53-0ubuntu0.14.04.1
+-- Versión de PHP: 5.5.9-1ubuntu4.20
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   PRIMARY KEY (`id`),
   KEY `fk_post_categorias1_idx` (`id_categoria`),
   KEY `fk_post_users1_idx` (`id_autor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `posts`
@@ -150,7 +150,8 @@ INSERT INTO `posts` (`id`, `titulo`, `descripcion`, `cuerpo`, `tags`, `fecha_cre
 (2, 'Este es mi primer post', 'Esta es la primera breve descripcion de mi post', '<p>Este es el cuerpo de mi primer post en la pagina</p>', 'mi tag 1, mi tag 2, mi tag 3', '2016-11-04 19:29:55', '2016-11-04 19:29:55', 1, 1, 2, 'este-es-mi-primer-post'),
 (3, 'Este es mi primer post', 'hola', '<p>hola</p>', 'hola, hola, hola', '2016-11-04 19:32:41', '2016-11-04 19:32:41', 1, 2, 2, 'este-es-mi-primer-post'),
 (4, 'moises hola hola ASDASDa sads', 'moises', '<p><strong>hola</strong></p>', 'aasd, asdas ,a sdasd', '2016-11-04 20:34:48', '2016-11-04 20:34:48', 1, 2, 2, 'moises-hola-hola-asdasda-sads'),
-(5, 'golondrina', 'golondrina', '<p>golondrina</p>', 'golondrina', '2016-11-15 15:45:26', '2016-11-15 15:45:26', 1, 2, 4, 'golondrina');
+(5, 'golondrina', 'golondrina', '<p>golondrina</p>', 'golondrina', '2016-11-15 15:45:26', '2016-11-15 15:45:26', 1, 2, 4, 'golondrina'),
+(6, 'post de yessi', 'post de yessi', '<p>post de yessi</p>', 'post de yessi', '2016-11-15 20:25:12', '2016-11-15 20:25:12', 1, 1, 7, 'post-de-yessi');
 
 -- --------------------------------------------------------
 
@@ -260,18 +261,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `fk_users_rangos1_idx` (`id_rango`),
   KEY `fk_users_roles1_idx` (`id_rol`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `id_rango`, `id_rol`, `nombre`, `apellido`, `fecha_nacimiento`, `descripcion`, `foto_perfil`) VALUES
-(2, 'Alan', 'arzapersonal@gmail.com', '$2y$10$Yphik6PY5TCmGDYjh.CgteeMfCG120ZFKuzGtqoAYOuMLwUpQP.Pi', 'RO56DGlsiR5z5buGuueyf54DexI5s0aWrGnGPiPVdxHn4XCTpsAxmM2x4Uiy', '2016-10-29 01:14:18', '2016-11-15 18:42:48', 1, 1, 'Eliezer', 'Arza', '1992-04-20', 'Main teemo!!', 'Alan.jpg'),
+(2, 'Alan', 'arzapersonal@gmail.com', '$2y$10$Yphik6PY5TCmGDYjh.CgteeMfCG120ZFKuzGtqoAYOuMLwUpQP.Pi', 'N5gqVRDar596eFMM7Dv5fk9GBCJ8V3kqJAgitDkfw05hmVQpXAorZUdeUUzm', '2016-10-29 01:14:18', '2016-11-15 23:22:29', 1, 1, 'Eliezer', 'Arza', '1992-04-20', 'Main teemo!!', 'Alan.jpg'),
 (3, 'Superdoop', 'alguien@alguien.com', '$2y$10$eLkA8JJHevqJd3Up4wptAeE5Ev/Wrl.G4i5n1I..WTvVy.h2Upbgm', 'fCm5TcMfwokGfMhgzbzX1AAB8zAJ8at5P6epOA5mu5VsDTrugj3UF8iF8SUL', '2016-11-08 04:38:43', '2016-11-08 04:40:52', 1, 1, 'Alan', 'Leon', '1990-11-09', 'Una descripcion sobre mi', 'no-avatar.png'),
 (4, 'golondrina01', 'golondrina@alguien.com', '$2y$10$ddQSxaZ5JOKD/JzTnsLfJOuryJafXGIrnY0v3USFa4ppRfOGxgBqm', 'Dfhh6ju7OZ3Z7UHu6aR7ymWjPtVHsgG14usgqguY9Cr3pkHNUQutOk3YYW4W', '2016-11-08 20:05:00', '2016-11-15 18:47:50', 1, 1, 'Ivo', 'Lares', '1994-11-16', 'Main yasuo!', 'golondrina.jpg'),
 (5, 'Asdfasdfasdf', 'alguie12asdf3n@alguien.com', '$2y$10$ikke3UEK.NqsYWAs4HAXSOFZbAtW8lN6aS7e6bZDQi.b/WX2J8aoi', 'FhGaovjqMBBVSs8QOliOXTssYWWxohk48ScDNaTB25DT0z7RyQ5Io5XG8eoG', '2016-11-08 21:19:50', '2016-11-08 21:28:51', 1, 1, NULL, NULL, NULL, 'Algo sobre mi..', 'no-avatar.png'),
-(6, 'Osdema', 'alguien123123@alguien.com', '$2y$10$mFTwd0kJcBNhr.Rx.7EiXeP/7P9Qsswnj4PtJahf0zr3rCf80ZYNq', NULL, '2016-11-08 21:29:32', '2016-11-08 21:29:32', 1, 1, 'oscar', 'demares', '2016-11-03', 'Algo sobre mi..', 'no-avatar.png');
+(6, 'Osdema', 'alguien123123@alguien.com', '$2y$10$mFTwd0kJcBNhr.Rx.7EiXeP/7P9Qsswnj4PtJahf0zr3rCf80ZYNq', NULL, '2016-11-08 21:29:32', '2016-11-08 21:29:32', 1, 1, 'oscar', 'demares', '2016-11-03', 'Algo sobre mi..', 'no-avatar.png'),
+(7, 'Yessica', 'example@example.com', '$2y$10$4RdQZozNkGLL/uc2RjtiaOBXMhI.D27GnoXyjvepXkbSrBon8KYXS', 'TiA3sDWOMRRimg616nu5mWXIXraSaYhr4IyGkFcxwRstl3XCksT5P5okyTou', '2016-11-15 23:24:09', '2016-11-15 23:43:44', 1, 1, 'Yessi', 'Arza', '1993-11-08', 'Hola como estas!', 'Yessic.jpg');
 
 -- --------------------------------------------------------
 
