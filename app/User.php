@@ -42,7 +42,7 @@ class User extends Authenticatable
     // muchos usuarios tienen muchos puntos en muchos posts
     public function puntos()
     {
-        return $this->hasOne('App\Puntos');
+        return $this->hasOne('App\Puntos','id_usuario');
     }
 
     public function comentarios()

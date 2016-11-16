@@ -8,7 +8,7 @@ class Categorias extends Model
 {
     public function post()
     {
-    	return $this->hasOne('App\Post');
+    	return $this->hasOne('App\Post','id_categoria');
     }
 
     // MIS FUNCIONES!!

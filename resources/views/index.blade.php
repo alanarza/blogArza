@@ -17,7 +17,7 @@
                             <div class="media">
                               <div class="media-left media-top">
                                 
-                                  <img class="media-object" style="max-width: 60px; max-heigth: 60px;"  src="/storage/{{ $post->usuario->foto_perfil }}" alt="...">
+                                  <img class="media-object" style="max-width: 70px; max-heigth: 50px; border-radius: 5px;"  src="/storage/{{ $post->usuario->foto_perfil }}" alt="...">
                                 
                               </div>
                               <div class="media-body">

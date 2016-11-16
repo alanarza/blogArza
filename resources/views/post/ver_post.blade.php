@@ -89,15 +89,15 @@
 
             <div class="well">
 
-                <legend>Perfil de: <a href="/perfil/{{ $post->usuario->name }}"> {{ $post->usuario->name }} </a></legend>
+                <legend>Creador: <a href="/perfil/{{ $post->usuario->name }}"> {{ $post->usuario->name }} </a></legend>
+				
+				<h5>Rango del creador: {{ $post->usuario->rango->nombre_rango }}</h5>
 
-                <h3>{{ $post->usuario->nombre }} {{ $post->usuario->apellido }}</h3>
+                <h5>Creado: {{ $post->fecha_creacion }} </h5>
 
-                <h5>Fecha de nacimiento: {{ $post->usuario->fecha_nacimiento }}</h5>
+                <h5>Editado: {{ $post->fecha_ultima_modificacion }}</h5>
 
-                <h5>Rango: {{ $post->usuario->rango->nombre_rango }}</h5>
-
-                <h5>Sobre mi: {{ $post->usuario->descripcion }}</h5>
+                <h5>Categoria: {{ $post->categoria->nombre_categoria }}</h5>
 
             </div>
         </div>

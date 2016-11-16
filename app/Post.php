@@ -18,7 +18,7 @@ class Post extends Model
     // El post tiene muchos puntos en distintos usuarios
     public function puntos()
     {
-        return $this->hasOne('App\Puntos');
+        return $this->hasOne('App\Puntos','id_post');
     }
 
     public function categoria()
