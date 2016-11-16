@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Puntos');
     }
 
+    public function comentarios()
+    {
+        return $this->hasOne('App\Comentarios','id_usuario');
+    }
+
     // El usuario posee un rol
     public function rol()
     {

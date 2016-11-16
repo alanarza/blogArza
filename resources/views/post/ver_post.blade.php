@@ -16,20 +16,68 @@
 				</div>
 				@endif
 
-				@if(!Auth::guest() && ($post->id_autor == Auth::user()->id || Auth::user()->es_admin())) <a href="/editar-post" class="btn btn-primary btn-xs pull-right">Editar</a> @endif </legend>
+				@if(!Auth::guest() && ($post->id_autor == Auth::user()->id || Auth::user()->es_admin()))
+					<a href="/editar-post" class="btn btn-primary btn-xs pull-right">Editar</a> 
+				@endif
+
+			</legend>
 
 			<h4>{{ $post->descripcion }}</h4>
 
 			{!! $post->cuerpo !!}
 
-			<div class="btn-toolbar">
-			
+			<hr>
+
+			<h4>Comentarios:</h4>
+
+			<div class="panel panel-default">
+				
+					
+					@if($comentarios->isEmpty())
+						<div class="panel-body">
+							Este post no tiene comentarios
+						</div>
+					@else
+
+						
+						@foreach($comentarios as $usrcoment)
+
+							<a href="/perfil/{{ $usrcoment->usuario->name}}" class="list-group-item">
+								<h4 class="list-group-item-heading" > 
+									{{ $usrcoment->usuario->name }}
+								</h4>
+
+								<p class="list-group-item-text">{{ $usrcoment->comentario }}</p>
+							</a>
+
+						@endforeach
+						
+
+					@endif
+
 			</div>
 
 			<div class="panel panel-default">
-			  <div class="panel-body">
-			    Panel de comentarios
-			  </div>
+				<div class="panel-body">
+
+				<form class="form-horizontal" role="form" method="POST" action="{{ url('/guardar_comentario') }}">
+                {!! csrf_field() !!}
+
+					<div class="form-group">
+                        <div class="col-md-12">
+                            <textarea id="sobremi" type="text" class="form-control" name="comentario" placeholder="Deja tu comentario"></textarea>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="id_usuario" value="{{ Auth::user()->id }}"></input>
+                    <input type="hidden" name="id_post" value="{{ $post->id }}"></input>
+
+                    <button type="submit" class="btn btn-success btn-xs pull-right">
+                        Enviar Comentario
+                    </button>
+
+                </form>
+				</div>
 			</div>
 
 		</div>

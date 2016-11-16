@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Post;
+use App\Comentarios;
 use App\Categorias;
 use Carbon\Carbon;
 
@@ -52,7 +53,27 @@ class PostController extends Controller
     {
         $post = Post::where('id',$id)->where('slug',$slug)->first();
 
-        return view('post.ver_post', compact('post'));
+        $comentarios = Comentarios::where('id_post', $post->id)->get();
+
+        return view('post.ver_post', compact('post','comentarios'));
+    }
+
+    public function guardar_comentario(Request $request)
+    {
+        $contenido = $request->all();
+        $comentario = new Comentarios();
+        $date = Carbon::now();
+        $date->toDateTimeString();
+
+        $comentario->id_usuario = $contenido['id_usuario'];
+        $comentario->id_post = $contenido['id_post'];
+        $comentario->comentario = $contenido['comentario'];
+        $comentario->created_at = $date;
+        $comentario->updated_at = $date;
+
+        $comentario->save();
+
+        return back();
     }
 
 }

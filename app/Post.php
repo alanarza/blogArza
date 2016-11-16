@@ -26,4 +26,9 @@ class Post extends Model
         return $this->belongsTo('App\Categorias','id_categoria');
     }
 
+    public function comentarios()
+    {
+        return $this->hasOne('App\Comentarios','id_post');
+    }
+
 }
