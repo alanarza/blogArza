@@ -19,4 +19,5 @@ class Puntos extends Model
     {
     	return $this->belongsTo('App\Post','id_post');
     }
+
 }

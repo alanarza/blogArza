@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -90,4 +91,15 @@ class User extends Authenticatable
         return false;
     }
 
+    public function puede_puntuar($idPost)
+    {
+        $resultado = $this->where('id_usuario', Auth::user()->id )->where('id_post', $idPost)->first();
+
+        if($resultado->isEmpty())
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
