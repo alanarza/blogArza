@@ -9,7 +9,7 @@
 
 			<legend>{{ $post->titulo }}
 
-				@if(!Auth::guest() && $post->id_autor != Auth::user()->id && Auth::user()->puede_puntuar($post->id) == true)
+				@if(!Auth::guest() && $post->id_autor != Auth::user()->id)
 				<div class="btn-group pull-right">
 					<a href="/puntuar" class="btn btn-default btn-xs btn-success" value="1">+1</a>
 					<a href="/puntuar" class="btn btn-default btn-xs btn-danger" value="-1">-1</a>
