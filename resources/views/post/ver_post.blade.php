@@ -7,26 +7,38 @@
 		
     	<div class="col-lg-9">
 
-			<legend>{{ $post->titulo }}
-
-				@if(!Auth::guest() && $post->id_autor != Auth::user()->id)
-				<div class="btn-group pull-right">
-					<a href="/puntuar" class="btn btn-default btn-xs btn-success" value="1">+1</a>
-					<a href="/puntuar" class="btn btn-default btn-xs btn-danger" value="-1">-1</a>
-				</div>
-				@endif
-
-				@if(!Auth::guest() && ($post->id_autor == Auth::user()->id || Auth::user()->es_admin()))
-					<a href="/editar-post" class="btn btn-primary btn-xs pull-right">Editar</a> 
-				@endif
-
-			</legend>
+			<legend>{{ $post->titulo }}</legend>
 
 			<h4>{{ $post->descripcion }}</h4>
 
 			{!! $post->cuerpo !!}
 
 			<hr>
+
+				@if ( $puntaje_final  >= 0 )
+					Puntos del post: <span class="label label-success label-lg">{{ $puntaje_final }}</span>
+				@else
+					Puntos del post: <span class="label label-danger label-lg"">{{ $puntaje_final }}</span>
+				@endif
+
+				@if(!Auth::guest() && $post->id_autor != Auth::user()->id && $puede_puntuar == true)
+				<div class="btn-group pull-right">
+
+					<form method="post" action="{{ url('/puntuar_comentario') }}">
+						{!! csrf_field() !!}
+						<input type="hidden" name="id_post" value="{{ $post->id }}"></input>
+				        <input type="submit" name="action" class="btn btn-default btn-xs btn-success" value="positivo"/>
+				        <input type="submit" name="action" class="btn btn-default btn-xs btn-danger" value="negativo"/>
+				     </form>
+
+				</div>
+				@endif
+
+			<hr>
+
+			@if(!Auth::guest() && ($post->id_autor == Auth::user()->id || Auth::user()->es_admin()))
+				<a href="/editar-post" class="btn btn-primary btn-xs pull-right">Editar</a> 
+			@endif
 
 			<h4>Comentarios:</h4>
 
@@ -84,7 +96,7 @@
 
 		<div class="col-lg-3">
             <a href="#" class="thumbnail">
-            <img style="max-width: 200px; max-heigth: 200px;" src="/storage/{{ $post->usuario->foto_perfil }}" alt="...">
+            <img style="max-width: 200px; max-heigth: 200px; border-radius: 5px;" src="/storage/{{ $post->usuario->foto_perfil }}" alt="...">
             </a>
 
             <div class="well">

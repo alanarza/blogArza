@@ -9,6 +9,8 @@ use App\Post;
 use App\Comentarios;
 use App\Categorias;
 use Carbon\Carbon;
+use App\Puntos;
+use Auth;
 
 class PostController extends Controller
 {
@@ -51,11 +53,23 @@ class PostController extends Controller
 
     public function ver_post($id, $slug)
     {
+        $punto = new Puntos();
+
         $post = Post::where('id',$id)->where('slug',$slug)->first();
 
         $comentarios = Comentarios::where('id_post', $post->id)->get();
 
-        return view('post.ver_post', compact('post','comentarios'));
+        $puede_puntuar = $punto->puede_puntuar($post->id);
+
+        $puntaje = Puntos::where('id_post',$post->id)->get();
+
+        $puntaje_final = 0;
+
+        foreach ($puntaje as $puntoo) {
+            $puntaje_final = $puntaje_final + $puntoo->punto;
+        }
+
+        return view('post.ver_post', compact('post','comentarios','puede_puntuar','puntaje_final'));
     }
 
     public function guardar_comentario(Request $request)

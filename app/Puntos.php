@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Puntos extends Model
 {
+    
+    public $timestamps = false;
+
 	protected $fillable = [
         'punto',
     ];
@@ -24,7 +28,7 @@ class Puntos extends Model
     {
         $resultado = $this->where('id_usuario', Auth::user()->id )->where('id_post', $idPost)->first();
 
-        if($resultado->isEmpty())
+        if($resultado == null)
         {
             return true;
         }

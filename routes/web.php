@@ -33,6 +33,8 @@ Route::post('/guardar-datos','PerfilController@guardarDatos');
 
 Route::post('/guardar_comentario', 'PostController@guardar_comentario');
 
+Route::post('/puntuar_comentario', 'PuntosController@puntuar_comentario');
+
 // Ruta para obtener archivos
 Route::get('storage/{archivo}', function ($archivo) {
 	$public_path = public_path();

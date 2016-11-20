@@ -6,7 +6,7 @@
 
         <div class="col-lg-3">
             <a href="#" class="thumbnail">
-            <img style="max-width: 200px; max-heigth: 200px;" src="/storage/{{ $user_perfil->foto_perfil }}" alt="...">
+            <img style="max-width: 200px; max-heigth: 200px; border-radius: 5px;" src="/storage/{{ $user_perfil->foto_perfil }}" alt="...">
             </a>
 
             <div class="well">
