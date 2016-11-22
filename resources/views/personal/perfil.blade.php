@@ -17,7 +17,7 @@
 
                 <h5>Fecha de nacimiento: {{ $user_perfil->fecha_nacimiento }}</h5>
 
-                <h5>Rango: {{ $user_perfil->rango->nombre_rango }}</h5>
+                <h5>Rango: {{ $mi_rango }}</h5>
 
                 <h5>Sobre mi: {{ $user_perfil->descripcion }}</h5>
 

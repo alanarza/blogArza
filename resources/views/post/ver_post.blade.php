@@ -27,6 +27,7 @@
 					<form method="post" action="{{ url('/puntuar_comentario') }}">
 						{!! csrf_field() !!}
 						<input type="hidden" name="id_post" value="{{ $post->id }}"></input>
+						<input type="hidden" name="id_autor" value="{{ $post->id_autor }}"></input>
 				        <input type="submit" name="action" class="btn btn-default btn-xs btn-success" value="positivo"/>
 				        <input type="submit" name="action" class="btn btn-default btn-xs btn-danger" value="negativo"/>
 				     </form>
@@ -103,7 +104,7 @@
 
                 <legend>Creador: <a href="/perfil/{{ $post->usuario->name }}"> {{ $post->usuario->name }} </a></legend>
 				
-				<h5>Rango del creador: {{ $post->usuario->rango->nombre_rango }}</h5>
+				<h5>Rango: {{ $mi_rango }}</h5>
 
                 <h5>Creado: {{ $post->fecha_creacion }} </h5>
 

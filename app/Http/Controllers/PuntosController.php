@@ -12,7 +12,7 @@ use Auth;
 
 class PuntosController extends Controller
 {
-    public function puntuar_comentario(Request $request)
+    public function puntuar_post(Request $request)
     { 
     	$punto = $request->all();
     	$nuevo_punto = new Puntos();
@@ -27,6 +27,7 @@ class PuntosController extends Controller
     	{
     		$nuevo_punto->id_post = $punto['id_post'];
     		$nuevo_punto->id_usuario = Auth::user()->id;
+            $nuevo_punto->id_autor = $punto['id_autor'];
     		$nuevo_punto->punto = 1;
 
     		$nuevo_punto->save();
@@ -35,6 +36,7 @@ class PuntosController extends Controller
     	{
 			$nuevo_punto->id_post = $punto['id_post'];
     		$nuevo_punto->id_usuario = Auth::user()->id;
+            $nuevo_punto->id_autor = $punto['id_autor'];
     		$nuevo_punto->punto = -1;
 
     		$nuevo_punto->save();

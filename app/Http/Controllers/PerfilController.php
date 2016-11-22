@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
-
 use App\Post;
+use App\Rangos;
 
 use Auth;
 
@@ -31,16 +31,22 @@ class PerfilController extends Controller
      */
     public function index($perf = null)
     {
+        $rango = new Rangos();        
+
         if($perf == '')
         {
             $user_perfil = User::where('name', Auth::user()->name)->first();
 
-            return view('personal.perfil', compact('user_perfil'));
+            $mi_rango = $rango->obtener_rango(Auth::user()->id);
+
+            return view('personal.perfil', compact('user_perfil','mi_rango'));
         }
 
         $user_perfil = User::where('name', $perf)->first();
 
-        return view('personal.perfil', compact('user_perfil'));
+        $mi_rango = $rango->obtener_rango($user_perfil->id);
+
+        return view('personal.perfil', compact('user_perfil','mi_rango'));
     }
 
     public function formEditar()

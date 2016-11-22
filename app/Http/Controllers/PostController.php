@@ -10,6 +10,7 @@ use App\Comentarios;
 use App\Categorias;
 use Carbon\Carbon;
 use App\Puntos;
+use App\Rangos;
 use Auth;
 
 class PostController extends Controller
@@ -55,6 +56,8 @@ class PostController extends Controller
     {
         $punto = new Puntos();
 
+        $rango = new Rangos();
+
         $post = Post::where('id',$id)->where('slug',$slug)->first();
 
         $comentarios = Comentarios::where('id_post', $post->id)->get();
@@ -65,11 +68,13 @@ class PostController extends Controller
 
         $puntaje_final = 0;
 
+        $mi_rango = $rango->obtener_rango($post->id_autor);
+
         foreach ($puntaje as $puntoo) {
             $puntaje_final = $puntaje_final + $puntoo->punto;
         }
 
-        return view('post.ver_post', compact('post','comentarios','puede_puntuar','puntaje_final'));
+        return view('post.ver_post', compact('post','comentarios','puede_puntuar','puntaje_final','mi_rango'));
     }
 
     public function guardar_comentario(Request $request)
