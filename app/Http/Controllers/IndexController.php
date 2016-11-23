@@ -12,7 +12,10 @@ class IndexController extends Controller
 {
     public function index()
     {
-    	$posts = Post::orderBy('fecha_creacion', 'desc')->paginate(10);
+    	
+    	$posts = Post::whereHas('usuario', function ($query) {
+		    $query->where('estado', '=', 1);
+		})->where('estado',1)->orderBy('fecha_creacion', 'desc')->paginate(10);
 
     	return view('index', compact('posts'));
     }

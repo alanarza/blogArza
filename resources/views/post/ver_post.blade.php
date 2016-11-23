@@ -38,8 +38,18 @@
 			<hr>
 
 			@if(!Auth::guest() && ($post->id_autor == Auth::user()->id || Auth::user()->es_admin()))
-				<a href="/editar-post" class="btn btn-primary btn-xs pull-right">Editar</a> 
+				<a href="/editar-post" class="btn btn-primary btn-xs pull-right">Editar</a>
+				<div class="btn-group pull-right">
+					<form method="post" action="{{ url('/borrar_post') }}">
+						{!! csrf_field() !!}
+				        <input type="hidden" name="id_post" value="{{ $post->id }}"/>
+				        <button type="submit" class="btn btn-default btn-xs btn-danger">
+                       		Borrar Post
+                    	</button>
+					</form>
+				</div>
 			@endif
+
 
 			<h4>Comentarios:</h4>
 

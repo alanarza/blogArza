@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-11-2016 a las 01:59:56
+-- Tiempo de generación: 23-11-2016 a las 06:46:19
 -- Versión del servidor: 5.5.53-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.20
 
@@ -147,28 +147,35 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `tags` varchar(255) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL,
   `fecha_ultima_modificacion` datetime DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT '1',
   `id_categoria` int(10) unsigned NOT NULL,
   `id_autor` int(10) unsigned NOT NULL,
   `slug` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_post_categorias1_idx` (`id_categoria`),
   KEY `fk_post_users1_idx` (`id_autor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Volcado de datos para la tabla `posts`
 --
 
 INSERT INTO `posts` (`id`, `titulo`, `descripcion`, `cuerpo`, `tags`, `fecha_creacion`, `fecha_ultima_modificacion`, `estado`, `id_categoria`, `id_autor`, `slug`) VALUES
-(1, 'hola', 'hola', '<p>hola</p>', 'hola, hola, hola', '2016-11-04 19:19:32', '2016-11-04 19:19:32', 1, 2, 2, 'hola'),
+(1, 'hola', 'hola', '<p>hola</p>', 'hola, hola, hola', '2016-11-04 19:19:32', '2016-11-04 19:19:32', 0, 2, 2, 'hola'),
 (2, 'Este es mi primer post', 'Esta es la primera breve descripcion de mi post', '<p>Este es el cuerpo de mi primer post en la pagina</p>', 'mi tag 1, mi tag 2, mi tag 3', '2016-11-04 19:29:55', '2016-11-04 19:29:55', 1, 1, 2, 'este-es-mi-primer-post'),
 (3, 'Este es mi primer post', 'hola', '<p>hola</p>', 'hola, hola, hola', '2016-11-04 19:32:41', '2016-11-04 19:32:41', 1, 2, 2, 'este-es-mi-primer-post'),
-(4, 'moises hola hola ASDASDa sads', 'moises', '<p><strong>hola</strong></p>', 'aasd, asdas ,a sdasd', '2016-11-04 20:34:48', '2016-11-04 20:34:48', 1, 2, 2, 'moises-hola-hola-asdasda-sads'),
+(4, 'moises hola hola ASDASDa sads', 'moises', '<p><strong>hola</strong></p>', 'aasd, asdas ,a sdasd', '2016-11-04 20:34:48', '2016-11-04 20:34:48', 0, 2, 2, 'moises-hola-hola-asdasda-sads'),
 (5, 'golondrina', 'golondrina', '<p>golondrina</p>', 'golondrina', '2016-11-15 15:45:26', '2016-11-15 15:45:26', 1, 2, 4, 'golondrina'),
 (6, 'post de yessi', 'post de yessi', '<p>post de yessi</p>', 'post de yessi', '2016-11-15 20:25:12', '2016-11-15 20:25:12', 1, 1, 7, 'post-de-yessi'),
 (7, 'dasda', 'dasda', '<p>sadadsa</p>', 'sda sadas', '2016-11-16 15:11:29', '2016-11-16 15:11:29', 1, 1, 8, 'dasda'),
-(8, 'TODOS PUTOS!', 'TODOS PUTOS!', '<p>TODOS PUTOS!&nbsp;</p>\r\n<p>LA CONCHA DE TU MADRE ALL BOYS!!!</p>', 'PUTOS', '2016-11-16 15:25:42', '2016-11-16 15:25:42', 1, 2, 8, 'todos-putos');
+(8, 'TODOS PUTOS!', 'TODOS PUTOS!', '<p>TODOS PUTOS!&nbsp;</p>\r\n<p>LA CONCHA DE TU MADRE ALL BOYS!!!</p>', 'PUTOS', '2016-11-16 15:25:42', '2016-11-16 15:25:42', 1, 2, 8, 'todos-putos'),
+(9, 'asd', 'asd', '<p>asd</p>', 'asd', '2016-11-22 17:03:46', '2016-11-22 17:03:46', 0, 1, 2, 'asd'),
+(10, 'afafasfasf', 'asfasfasdasd', '<p>asfasfasf</p>', 'asfasf', '2016-11-22 17:04:05', '2016-11-22 17:04:05', 1, 1, 2, 'afafasfasf'),
+(11, 'asdasd', 'asfafafa', '<p>asfsafasf</p>', 'asfasf', '2016-11-22 17:04:14', '2016-11-22 17:04:14', 1, 1, 2, 'asdasd'),
+(12, 'Post de omar', 'post de yessi', '<p>asd</p>', 'post de yessi', '2016-11-22 17:04:29', '2016-11-22 17:04:29', 1, 1, 2, 'post-de-omar'),
+(13, 'asd', 'asdasdf', '<p>asfasf</p>', 'asfassdasd', '2016-11-22 17:04:43', '2016-11-22 17:04:43', 0, 1, 2, 'asd'),
+(14, 'asfgfasdgasdg', 'asdgasdg', '<p>asdgasdg</p>', 'asdgasdga', '2016-11-22 17:05:00', '2016-11-22 17:05:00', 0, 1, 2, 'asfgfasdgasdg'),
+(15, 'Post de omar', 'post de yessi', '<p>asd</p>', 'asd', '2016-11-22 17:05:24', '2016-11-22 17:05:24', 0, 1, 2, 'post-de-omar');
 
 -- --------------------------------------------------------
 
@@ -224,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `rangos` (
   `descripcion` varchar(255) DEFAULT NULL,
   `valor` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `rangos`
@@ -304,6 +311,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `fecha_nacimiento` date DEFAULT NULL,
   `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'Algo sobre mi..',
   `foto_perfil` varchar(100) COLLATE utf8_unicode_ci DEFAULT 'no-avatar.png',
+  `estado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`),
   UNIQUE KEY `name_UNIQUE` (`name`),
@@ -314,14 +322,14 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `id_rol`, `nombre`, `apellido`, `fecha_nacimiento`, `descripcion`, `foto_perfil`) VALUES
-(2, 'Alan', 'arzapersonal@gmail.com', '$2y$10$Yphik6PY5TCmGDYjh.CgteeMfCG120ZFKuzGtqoAYOuMLwUpQP.Pi', 'n8U2dEY0HedbVVv8DkVn8lNeBtreAZYHJzLtPCEEsfjyEiAiXFfkvRJ8ftYO', '2016-10-29 01:14:18', '2016-11-22 06:26:14', 1, 'Eliezer', 'Arza', '1992-04-20', 'Main teemo!!', 'Alan.jpg'),
-(3, 'Superdoop', 'alguien@alguien.com', '$2y$10$eLkA8JJHevqJd3Up4wptAeE5Ev/Wrl.G4i5n1I..WTvVy.h2Upbgm', 'xQciBHouGBcgCudGJLIQTvT4gTUbF4RPQgur7LrbbZdEabABrOEE5OUjSFO4', '2016-11-08 04:38:43', '2016-11-22 07:19:06', 1, 'Alan', 'Leon', '1990-11-09', 'Una descripcion sobre mi', 'no-avatar.png'),
-(4, 'golondrina01', 'golondrina@alguien.com', '$2y$10$ddQSxaZ5JOKD/JzTnsLfJOuryJafXGIrnY0v3USFa4ppRfOGxgBqm', 'IaCPtDEaTAoFpvuecSHH9h2LoPbIE9gACTWjKvtCyMgzMSXVEdJB4COMXTw3', '2016-11-08 20:05:00', '2016-11-22 07:28:44', 1, 'Ivo', 'Lares', '1994-11-16', 'Main yasuo!', 'golondrina.jpg'),
-(5, 'Asdfasdfasdf', 'alguie12asdf3n@alguien.com', '$2y$10$ikke3UEK.NqsYWAs4HAXSOFZbAtW8lN6aS7e6bZDQi.b/WX2J8aoi', 'FhGaovjqMBBVSs8QOliOXTssYWWxohk48ScDNaTB25DT0z7RyQ5Io5XG8eoG', '2016-11-08 21:19:50', '2016-11-08 21:28:51', 1, NULL, NULL, NULL, 'Algo sobre mi..', 'no-avatar.png'),
-(6, 'Osdema', 'alguien123123@alguien.com', '$2y$10$mFTwd0kJcBNhr.Rx.7EiXeP/7P9Qsswnj4PtJahf0zr3rCf80ZYNq', NULL, '2016-11-08 21:29:32', '2016-11-08 21:29:32', 1, 'oscar', 'demares', '2016-11-03', 'Algo sobre mi..', 'no-avatar.png'),
-(7, 'Yessica', 'example@example.com', '$2y$10$4RdQZozNkGLL/uc2RjtiaOBXMhI.D27GnoXyjvepXkbSrBon8KYXS', 'kT5DiFVjZ8iCcCop9XDMgZFMvv4VcQRLjhrAj3jPYUrrSmaBrKsmOBrzZaYz', '2016-11-15 23:24:09', '2016-11-22 07:18:15', 1, 'Yessi', 'Arza', '1993-11-08', 'Hola como estas!', 'Yessic.jpg'),
-(8, 'valdesoft', 'fmvaldebenito@udc.edu.ar', '$2y$10$8Z6b60RVcgegpVrv3qzi/OXn6zNsVJIHxr3/m/wFQhqgB289VtByu', NULL, '2016-11-16 18:10:58', '2016-11-16 18:23:06', 1, 'lio', 'fressi', '2000-12-31', 'Algo sdas', 'valdesoft.jpg');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `id_rol`, `nombre`, `apellido`, `fecha_nacimiento`, `descripcion`, `foto_perfil`, `estado`) VALUES
+(2, 'Alan', 'arzapersonal@gmail.com', '$2y$10$Yphik6PY5TCmGDYjh.CgteeMfCG120ZFKuzGtqoAYOuMLwUpQP.Pi', 'CL9GTicSPoBrNgcczURg0dzV4wqBQL5ZopeuE5sVBTL5KOMJoqBS2X0gnQJk', '2016-10-29 01:14:18', '2016-11-23 00:15:25', 2, 'Eliezer', 'Arza', '1992-04-20', 'Main teemo!!', 'Alan.jpg', 1),
+(3, 'Superdoop', 'alguien@alguien.com', '$2y$10$eLkA8JJHevqJd3Up4wptAeE5Ev/Wrl.G4i5n1I..WTvVy.h2Upbgm', '2lubc8pIdJMafGgiweMZUZgFuOb9SgH6wYUafWJfsfbelL8myHutRyGo6DrE', '2016-11-08 04:38:43', '2016-11-23 00:19:10', 1, 'Alan', 'Leon', '1990-11-09', 'Una descripcion sobre mi', 'no-avatar.png', 1),
+(4, 'golondrina01', 'golondrina@alguien.com', '$2y$10$ddQSxaZ5JOKD/JzTnsLfJOuryJafXGIrnY0v3USFa4ppRfOGxgBqm', 'IaCPtDEaTAoFpvuecSHH9h2LoPbIE9gACTWjKvtCyMgzMSXVEdJB4COMXTw3', '2016-11-08 20:05:00', '2016-11-22 07:28:44', 1, 'Ivo', 'Lares', '1994-11-16', 'Main yasuo!', 'golondrina.jpg', 1),
+(5, 'Asdfasdfasdf', 'alguie12asdf3n@alguien.com', '$2y$10$ikke3UEK.NqsYWAs4HAXSOFZbAtW8lN6aS7e6bZDQi.b/WX2J8aoi', 'FhGaovjqMBBVSs8QOliOXTssYWWxohk48ScDNaTB25DT0z7RyQ5Io5XG8eoG', '2016-11-08 21:19:50', '2016-11-08 21:28:51', 1, NULL, NULL, NULL, 'Algo sobre mi..', 'no-avatar.png', 1),
+(6, 'Osdema', 'alguien123123@alguien.com', '$2y$10$mFTwd0kJcBNhr.Rx.7EiXeP/7P9Qsswnj4PtJahf0zr3rCf80ZYNq', NULL, '2016-11-08 21:29:32', '2016-11-08 21:29:32', 1, 'oscar', 'demares', '2016-11-03', 'Algo sobre mi..', 'no-avatar.png', 1),
+(7, 'Yessica', 'example@example.com', '$2y$10$4RdQZozNkGLL/uc2RjtiaOBXMhI.D27GnoXyjvepXkbSrBon8KYXS', '1xxkKHRr3kXDvi7CPMz3K640S62cj9QR3aB5cYjs45ke2oozIDtfpkXiY1QC', '2016-11-15 23:24:09', '2016-11-22 23:49:15', 1, 'Yessi', 'Arza', '1993-11-08', 'Hola como estas!', 'Yessic.jpg', 1),
+(8, 'valdesoft', 'fmvaldebenito@udc.edu.ar', '$2y$10$8Z6b60RVcgegpVrv3qzi/OXn6zNsVJIHxr3/m/wFQhqgB289VtByu', NULL, '2016-11-16 18:10:58', '2016-11-16 18:23:06', 1, 'lio', 'fressi', '2000-12-31', 'Algo sdas', 'valdesoft.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -360,9 +368,9 @@ ALTER TABLE `posts`
 -- Filtros para la tabla `puntos`
 --
 ALTER TABLE `puntos`
-  ADD CONSTRAINT `fk_puntos_users2` FOREIGN KEY (`id_autor`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_puntos_post1` FOREIGN KEY (`id_post`) REFERENCES `posts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_puntos_users1` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_puntos_users1` FOREIGN KEY (`id_usuario`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_puntos_users2` FOREIGN KEY (`id_autor`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `rol_permiso`

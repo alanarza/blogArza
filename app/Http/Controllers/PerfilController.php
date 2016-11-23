@@ -37,16 +37,30 @@ class PerfilController extends Controller
         {
             $user_perfil = User::where('name', Auth::user()->name)->first();
 
+            if($user_perfil->estado == '0')
+            {
+                abort(404);
+            }
+
             $mi_rango = $rango->obtener_rango(Auth::user()->id);
 
-            return view('personal.perfil', compact('user_perfil','mi_rango'));
+            $mis_posts = Post::where('id_autor',$user_perfil->id)->where('estado',1)->orderBy('fecha_creacion', 'desc')->paginate(10);
+
+            return view('personal.perfil', compact('user_perfil','mi_rango','mis_posts'));
         }
 
         $user_perfil = User::where('name', $perf)->first();
 
+        if($user_perfil->estado == '0')
+        {
+            abort(404);
+        }
+
+        $mis_posts = Post::where('id_autor',$user_perfil->id)->where('estado',1)->orderBy('fecha_creacion', 'desc')->paginate(10);
+
         $mi_rango = $rango->obtener_rango($user_perfil->id);
 
-        return view('personal.perfil', compact('user_perfil','mi_rango'));
+        return view('personal.perfil', compact('user_perfil','mi_rango','mis_posts'));
     }
 
     public function formEditar()
@@ -117,7 +131,7 @@ class PerfilController extends Controller
     }
 
     protected function guardarDatos(Request $request)
-    {   
+    {
 
         $usuarioid = Auth::user();
 
@@ -171,6 +185,17 @@ class PerfilController extends Controller
         $user->save();
 
         return redirect('/perfil');
+    }
+
+
+    public function administracion()
+    {
+        if(!Auth::user()->es_admin())
+        {
+            abort(403);
+        }
+
+        return view('personal.administracion');
     }
 
 }

@@ -30,7 +30,7 @@
 
             <legend>Post de {{ $user_perfil->name }} @if(!Auth::guest() && ($user_perfil->id == Auth::user()->id || Auth::user()->es_admin())) <a href="/nuevo_post" class="btn btn-success btn-xs pull-right">Crear Post <span class="glyphicon glyphicon-plus"></span></a> @endif</legend>
             <div class="list-group">
-            @foreach( $user_perfil->posts as $post )
+            @foreach( $mis_posts as $post )
                 <a href="{{ url('post/'.$post->id.'/'.$post->slug) }}" style="text-decoration:none" class="list-group-item">
                 
                     <div class="media">
@@ -50,6 +50,7 @@
 
                 </a>
             @endforeach
+                {{ $mis_posts->links() }}
             </div>
             </div>
         </div>

@@ -32,6 +32,7 @@
 
                         </a>
                     @endforeach
+                    {!! $posts->render() !!}
                     </div>
 
                 </div>

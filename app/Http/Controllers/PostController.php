@@ -60,6 +60,16 @@ class PostController extends Controller
 
         $post = Post::where('id',$id)->where('slug',$slug)->first();
 
+        if ($post->estado == '0')
+        {
+            abort(404);
+        }
+
+        if ($post->usuario->estado == '0')
+        {
+            abort(404);
+        }
+
         $comentarios = Comentarios::where('id_post', $post->id)->get();
 
         $puede_puntuar = $punto->puede_puntuar($post->id);
@@ -93,6 +103,19 @@ class PostController extends Controller
         $comentario->save();
 
         return back();
+    }
+
+    public function borrar_post(Request $request)
+    {
+        $contenido = $request->all();
+
+        $post = Post::where('id',$contenido['id_post'])->first();
+
+        $post->estado = '0';
+
+        $post->save();
+
+        return redirect('/');
     }
 
 }
