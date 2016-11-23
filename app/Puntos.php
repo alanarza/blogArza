@@ -46,6 +46,28 @@ class Puntos extends Model
         return $puntaje;
     }
 
+    public function puntos_post($id_post)
+    {
+        $puntos = $this->where('id_post', $id_post)->get();
+        $puntaje = 0;
+
+        foreach ($puntos as $puntox) {
+            
+            if($puntox->punto > 0)
+            {
+                $puntaje = $puntaje + 1;
+            }
+
+            if($puntox->punto < 0)
+            {
+                $puntaje = $puntaje - 1;
+            }
+
+        }
+
+        return $puntaje;
+    }
+
     public function puede_puntuar($idPost)
     {
         $resultado = $this->where('id_usuario', Auth::user()->id )->where('id_post', $idPost)->first();

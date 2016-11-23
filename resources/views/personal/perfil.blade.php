@@ -21,6 +21,12 @@
 
                 <h5>Sobre mi: {{ $user_perfil->descripcion }}</h5>
 
+                @if ( $user_perfil->puntuacion  >= 0 )
+                    <h5> Mis puntos: <span class="label label-success label-lg">{{ $user_perfil->puntuacion }}</span></h5>
+                @else
+                    <h5> Mis puntos: <span class="label label-danger label-lg">{{ $user_perfil->puntuacion }}</span></h5>
+                @endif
+
             </div>
         </div>
 
