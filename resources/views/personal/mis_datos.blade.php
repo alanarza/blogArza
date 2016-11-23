@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">Mis Datos</div>
                 <div class="panel-body">
@@ -76,6 +76,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         Guardar Cambios
                                     </button>
+
                                 </div>
                             </div>
                         </div>
@@ -83,6 +84,33 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Desactivar cuenta</div>
+                <div class="panel-body">
+
+                <p>Si usted desactiva su cuenta, sus publicaciones tambien se
+                   desactivaran, no se podra visitar su perfil, debera pedir 
+                   ayuda a un Administrador para volver a activarla.</p>
+
+                <div class="col-md-4 col-md-offset-2">
+                    <div class="btn-group">
+                    <form method="post" action="{{ url('/desactivar_cuenta') }}">
+                        {!! csrf_field() !!}
+                        <button type="submit" class="btn btn-default btn-md btn-danger">
+                            <span class="glyphicon glyphicon-exclamation-sign"></span>Desactivar Cuenta
+                        </button>
+                    </form>
+                </div>
+
+                </div>
+
+                </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 @endsection

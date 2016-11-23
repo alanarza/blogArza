@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'nombre', 'apellido', 'fecha_nacimiento', 'descripcion', 'foto_perfil',
+        'name', 'email', 'password', 'nombre', 'apellido', 'fecha_nacimiento', 'descripcion', 'foto_perfil', 
     ];
 
     /**
@@ -89,5 +89,12 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+
+    public function estado()
+    {
+        $estado = $this->estado;
+
+        return $estado;
     }
 }

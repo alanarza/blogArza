@@ -11,21 +11,24 @@
     <title>{{ config('app.name', 'SoftBlog') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-
+    
     <script>
       $( function() {
         $( "#datepicker" ).datepicker();
       } );
     </script>
+
+    
 
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -71,11 +74,12 @@
                             <li><a href="{{ url('/login') }}">Ingresar</a></li>
                             <li><a href="{{ url('/register') }}">Registrarse</a></li>
                         @else
-                            <li><a href="/perfil">Perfil <span class="sr-only"></span></a></li>
 
                             @if(Auth::user()->es_admin())
                                 <li><a href="/administracion">Administracion <span class="sr-only"></span></a></li>
                             @endif
+
+                            <li><a href="/perfil">Perfil <span class="sr-only"></span></a></li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -110,9 +114,26 @@
     </div>
 
     <!-- Scripts -->
+    
 
-    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script>
+     
     <script src="/js/app.js"></script>
+    <script src="{{ asset('/js/jquery-3.1.1.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>   
+    
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('#myTable').dataTable(
+
+            {searchable: true}
+
+        );
+    });
+</script>
+
+    
+
+
 </body>
 </html>

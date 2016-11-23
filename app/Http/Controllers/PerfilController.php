@@ -70,7 +70,7 @@ class PerfilController extends Controller
         return view('personal.editar_perfil', compact('usuario'));
     }
 
-    protected function guardar(Request $request)
+    public function guardar(Request $request)
     {
         $this->validate($request, [
             'nombre' => 'required|alpha|max:255',
@@ -130,7 +130,7 @@ class PerfilController extends Controller
         return view('personal.mis_datos', compact('usuario'));
     }
 
-    protected function guardarDatos(Request $request)
+    public function guardarDatos(Request $request)
     {
 
         $usuarioid = Auth::user();
@@ -185,17 +185,6 @@ class PerfilController extends Controller
         $user->save();
 
         return redirect('/perfil');
-    }
-
-
-    public function administracion()
-    {
-        if(!Auth::user()->es_admin())
-        {
-            abort(403);
-        }
-
-        return view('personal.administracion');
     }
 
 }

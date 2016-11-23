@@ -18,13 +18,14 @@
 				@if ( $puntaje_final  >= 0 )
 					Puntos del post: <span class="label label-success label-lg">{{ $puntaje_final }}</span>
 				@else
-					Puntos del post: <span class="label label-danger label-lg"">{{ $puntaje_final }}</span>
+					Puntos del post: <span class="label label-danger label-lg">{{ $puntaje_final }}</span>
 				@endif
 
 				@if(!Auth::guest() && $post->id_autor != Auth::user()->id && $puede_puntuar == true)
+
 				<div class="btn-group pull-right">
 
-					<form method="post" action="{{ url('/puntuar_comentario') }}">
+					<form method="post" action="{{ url('/puntuar_post') }}">
 						{!! csrf_field() !!}
 						<input type="hidden" name="id_post" value="{{ $post->id }}"></input>
 						<input type="hidden" name="id_autor" value="{{ $post->id_autor }}"></input>
